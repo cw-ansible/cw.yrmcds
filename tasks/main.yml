@@ -1,0 +1,16 @@
+---
+
+- name: install yrmcds package
+  apt:
+    name: yrmcds
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: configure yrmcds
+  template:
+    src: etc/yrmcds.conf
+    dest: /etc/yrmcds.conf
+    owner: root
+    group: root
+    mode: '0644'
