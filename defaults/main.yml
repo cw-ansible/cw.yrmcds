@@ -1,0 +1,25 @@
+---
+
+# yrmcds configuration file variable. Each variable name is defined using
+# fowllowing rules:
+# 
+# - Each name is prefixed with "yrmcds_conf_"
+# - each dot (".") is replaced by an underscore ("_")
+#
+# See /etc/yrmcds.conf for details.
+
+#  yrmcds_conf_user:
+#  yrmcds_conf_group:
+#  yrmcds_conf_virtual_ip:
+#  yrmcds_conf_port:
+#  yrmcds_conf_repl_port:
+#  yrmcds_conf_max_connections:
+#  yrmcds_conf_temp_dir:
+#  yrmcds_conf_log_threshold:
+#  yrmcds_conf_log_file:
+#  yrmcds_conf_buckets:
+#  yrmcds_conf_max_data_size:
+#  yrmcds_conf_heap_data_limit:
+#  yrmcds_conf_memory_limit:
+#  yrmcds_conf_workers:
+#  yrmcds_conf_gc_interval:
