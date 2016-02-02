@@ -1,0 +1,13 @@
+# place this file as /etc/logrotate.d/yrmcds
+
+{{ yrmcds_conf_log_file | default('/var/log/yrmcds.log') }} {
+	notifempty
+	weekly
+	rotate 4
+	compress
+	missingok
+	create 0644 {{ yrmcds_conf_user | default('yrmcds') }} {{ yrmcds_conf_group | default('yrmcds') }}
+	postrotate
+		service yrmcds reload >/dev/null 2>&1 || true
+	endscript
+}

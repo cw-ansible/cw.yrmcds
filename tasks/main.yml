@@ -9,8 +9,21 @@
 
 - name: configure yrmcds
   template:
-    src: etc/yrmcds.conf
-    dest: /etc/yrmcds.conf
-    owner: root
-    group: root
-    mode: '0644'
+    src: '{{ item.src }}'
+    dest: '{{ item.dest | default("/" + item.src) }}'
+    owner: '{{ item.owner | default("root") }}'
+    group: '{{ item.group | default("root") }}'
+    mode: '{{ item.mode | default("0644") }}'
+  with_items:
+    - src: etc/yrmcds.conf
+    - src: etc/logrotate.d/yrmcds
+
+- name: Create log directory
+  file:
+    dest: '{{ (yrmcds_conf_log_file | default("/var/log/yrmcds.log")) | dirname}}'
+    owner: '{{ yrmcds_conf_user | default("yrmcds") }}'
+    group: '{{ yrmcds_conf_group | default("yrmcds") }}'
+    mode: '0755'
+    state: directory
+  when:
+    (yrmcds_conf_log_file | default("/var/log/yrmcds.log")) | dirname != '/var/log'
